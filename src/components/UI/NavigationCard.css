@@ -1,0 +1,18 @@
+.navigation-card {
+  border-radius: 3rem;
+  background-color: white;
+  margin: 0 2rem 0 2rem;
+}
+
+.navigation-card:hover{
+  background-color: rgb(209, 209, 209, 0.8);
+  transition: linear;
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
+.title {
+  font-size: 1.5rem;
+  padding: 0.8rem;
+  text-align: center;
+}
