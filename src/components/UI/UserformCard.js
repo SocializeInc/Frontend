@@ -1,6 +1,6 @@
-import "./UserformCard.css";
+import "./UserFormCard.css";
 
-const UserformCard = (props) => {
+const UserFormCard = (props) => {
   const classes = "userform-card " + props.className;
 
   return (
@@ -11,4 +11,4 @@ const UserformCard = (props) => {
   );
 };
 
-export default UserformCard;
+export default UserFormCard;

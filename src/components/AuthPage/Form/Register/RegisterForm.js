@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserformCard from "../../UI/UserformCard";
+import UserFormCard from "../../../UI/UserFormCard";
 
 import "./RegisterForm.css";
 
@@ -60,7 +60,7 @@ const RegisterForm = (props) => {
       password: registeredUserData.password,
     };
 
-    props.onSaveExpenseData(userData);
+    //TODO: send userData JSON to backend
     setRegisteredUserData({
       firstName: "",
       lastName: "",
@@ -77,7 +77,7 @@ const RegisterForm = (props) => {
 
   return (
     <div>
-      <UserformCard title="Register">
+      <UserFormCard title="Register">
         <form onSubmit={submitHandler}>
           <div className="input-container">
             <label>First Name</label>
@@ -146,7 +146,7 @@ const RegisterForm = (props) => {
         <div className="button-container">
           <input type="submit" value="Back" onClick={backToLoginHandler} />
         </div>
-      </UserformCard>
+      </UserFormCard>
     </div>
   );
 };

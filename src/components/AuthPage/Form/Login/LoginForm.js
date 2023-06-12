@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import UserformCard from "../../UI/UserformCard";
+import UserFormCard from "../../../UI/UserFormCard";
 import "./LoginForm.css";
 
 const LoginForm = (props) => {
@@ -51,7 +51,7 @@ const LoginForm = (props) => {
       password: loginUserData.password,
     };
 
-    props.onSaveExpenseData(userData);
+    //TODO: send userData JSON to backend
     setLoginUserData({
       username: "",
       password: "",
@@ -60,7 +60,7 @@ const LoginForm = (props) => {
 
   return (
     <div>
-      <UserformCard title="Login">
+      <UserFormCard title="Login">
         <form onSubmit={submitHandler}>
           <div className="input-container">
             <label>Username</label>
@@ -90,7 +90,7 @@ const LoginForm = (props) => {
         <div className="button-container">
           <input type="submit" value="Register" onClick={registerHandler} />
         </div>
-      </UserformCard>
+      </UserFormCard>
     </div>
   );
 };

@@ -1,26 +1,13 @@
-import React from "react";
+import Auth from './components/AuthPage/Auth';
+import Main from './components/MainPage/Main';
 
-import Form from './components/Form/Form'
+
 import "./App.css";
 
 function App() {
 
-  const database = [
-    {
-      username: "user1",
-      password: "pass1"
-    },
-    {
-      username: "user2",
-      password: "pass2"
-    }
-  ];
-
   return (
-    <div className="app">
-      <h1>Socialize</h1>
-      <Form users={database} />
-    </div>
+    <Auth />
   );
 };
 
