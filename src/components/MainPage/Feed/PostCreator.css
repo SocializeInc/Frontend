@@ -20,7 +20,7 @@ textarea::-ms-value {
 .post-header {
   text-align: center;
   font-size: 2rem;
-  margin: 2rem;
+  margin-bottom: 2rem;
 }
 
 .post-functions{
