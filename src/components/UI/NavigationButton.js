@@ -1,6 +1,6 @@
-import "./NavigationCard.css";
+import "./NavigationButton.css";
 
-const NavigationCard = (props) => {
+const NavigationButton = (props) => {
   const classes = "navigation-card " + props.className;
 
   return (
@@ -10,4 +10,4 @@ const NavigationCard = (props) => {
   );
 };
 
-export default NavigationCard;
+export default NavigationButton;

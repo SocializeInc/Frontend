@@ -1,12 +1,13 @@
-import PostCreator from './PostCreator';
+import PostCreator from "./PostCreator";
+import MainBlock from "../../UI/MainBlock";
 
-import './Feed.css';
+import "./Feed.css";
 
 const Feed = () => {
-  return(
-    <div>
+  return (
+    <MainBlock className='feed-block' >
       <PostCreator />
-    </div>
+    </MainBlock>
   );
 };
 

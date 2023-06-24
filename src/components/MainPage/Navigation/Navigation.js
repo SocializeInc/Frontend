@@ -1,15 +1,16 @@
-import NavigationCard from '../../UI/NavigationCard';
+import NavigationButton from '../../UI/NavigationButton';
+import MainBlock from '../../UI/MainBlock';
 
 import './Navigation.css';
 
 const Navigation = () => {
   return(
-    <div className='navigation-block'>
-      <NavigationCard title="Home"/>
-      <NavigationCard title="Notifications"/>
-      <NavigationCard title="Messages"/>
-      <NavigationCard title="Bookmarks"/>
-    </div>
+    <MainBlock>
+      <NavigationButton title="Home"/>
+      <NavigationButton title="Notifications"/>
+      <NavigationButton title="Messages"/>
+      <NavigationButton title="Bookmarks"/>
+    </MainBlock>
   );
 };
 

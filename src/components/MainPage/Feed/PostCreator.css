@@ -17,12 +17,6 @@ textarea::-ms-value {
   font-size: 1.2rem;
 }
 
-.post-block{
-  border-style: none none solid none;
-  border-color: #ff9966;
-  border-bottom-width: 2px;
-}
-
 .post-header {
   text-align: center;
   font-size: 2rem;
