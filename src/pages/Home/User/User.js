@@ -1,5 +1,5 @@
-import MainBlock from '../../UI/MainBlock';
-import Card from '../../UI/Card'; 
+import MainBlock from '../../../components/UI/MainBlock';
+import Card from '../../../components/UI/Card'; 
 import './User.css';
 
 const User = () => {

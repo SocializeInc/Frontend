@@ -1,5 +1,5 @@
-import Auth from './components/AuthPage/Auth';
-import Main from './components/MainPage/Main';
+import Auth from './pages/Login/Auth';
+import Main from './pages/Home/Home';
 
 
 import "./App.css";

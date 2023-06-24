@@ -1,5 +1,5 @@
 import PostCreator from "./PostCreator";
-import MainBlock from "../../UI/MainBlock";
+import MainBlock from "../../../components/UI/MainBlock";
 
 import "./Feed.css";
 

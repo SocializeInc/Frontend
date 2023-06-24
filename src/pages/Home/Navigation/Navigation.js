@@ -1,5 +1,5 @@
-import NavigationButton from '../../UI/NavigationButton';
-import MainBlock from '../../UI/MainBlock';
+import NavigationButton from '../../../components/UI/NavigationButton';
+import MainBlock from '../../../components/UI/MainBlock';
 
 import './Navigation.css';
 
