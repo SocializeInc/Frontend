@@ -1,6 +1,6 @@
 import React from "react";
 
-import Form from '../AuthPage/Form/Form';
+import Form from '../../pages/Login/Form/Form';
 
 import './Auth.css';
 

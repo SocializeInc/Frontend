@@ -1,0 +1,60 @@
+p {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.user{
+  display: flex;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.user:hover{
+  transition: ease-out;
+  transition-duration: 300ms;
+}
+
+.user-row{
+  flex-direction: row;
+}
+
+.user-open{
+  flex-direction: column;
+  text-align: center;
+}
+
+.user_option{
+  margin: 0.2rem;
+  padding: 0.3rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.user_option:hover{
+  background-color: rgb(209, 209, 209, 0.8);
+  transition: linear;
+  transition-property: background-color;
+  transition-duration: 200ms;
+} 
+
+img{
+  width: 1rem;
+  height: 1rem;
+}
+
+.photo{
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  width: 25%;
+}
+
+.username{
+  align-items: center;
+  justify-content: center;
+  padding: 0.3rem;
+  width: 75%;
+}
