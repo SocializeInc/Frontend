@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import UserFormCard from "../../../UI/UserFormCard";
+import Card from "../../../UI/Card";
 import "./LoginForm.css";
 
 const LoginForm = (props) => {
@@ -59,39 +59,38 @@ const LoginForm = (props) => {
   };
 
   return (
-    <div>
-      <UserFormCard title="Login">
-        <form onSubmit={submitHandler}>
-          <div className="input-container">
-            <label>Username</label>
-            <input
-              type="text"
-              name="lastName"
-              value={loginUserData.username}
-              onChange={usernameChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Password</label>
-            <input
-              type="password"
-              name="registerPass"
-              value={loginUserData.password}
-              onChange={passwordChangeHandler}
-              minLength={6}
-              required
-            />
-          </div>
-          <div className="button-container">
-            <input type="submit" value="Log In" />
-          </div>
-        </form>
-        <div className="button-container">
-          <input type="submit" value="Register" onClick={registerHandler} />
+    <Card>
+      <div className="title">Login</div>
+      <form onSubmit={submitHandler}>
+        <div className="input-container">
+          <label>Username</label>
+          <input
+            type="text"
+            name="lastName"
+            value={loginUserData.username}
+            onChange={usernameChangeHandler}
+            required
+          />
         </div>
-      </UserFormCard>
-    </div>
+        <div className="input-container">
+          <label>Password</label>
+          <input
+            type="password"
+            name="registerPass"
+            value={loginUserData.password}
+            onChange={passwordChangeHandler}
+            minLength={6}
+            required
+          />
+        </div>
+        <div className="button-container">
+          <input type="submit" value="Log In" />
+        </div>
+      </form>
+      <div className="button-container">
+        <input type="submit" value="Register" onClick={registerHandler} />
+      </div>
+    </Card>
   );
 };
 

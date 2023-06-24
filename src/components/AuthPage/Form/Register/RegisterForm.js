@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserFormCard from "../../../UI/UserFormCard";
+import Card from "../../../UI/Card";
 
 import "./RegisterForm.css";
 
@@ -76,78 +76,77 @@ const RegisterForm = (props) => {
   };
 
   return (
-    <div>
-      <UserFormCard title="Register">
-        <form onSubmit={submitHandler}>
-          <div className="input-container">
-            <label>First Name</label>
-            <input
-              type="text"
-              name="firstName"
-              value={registeredUserData.firstName}
-              onChange={firstNameChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              value={registeredUserData.lastName}
-              onChange={lastNameChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Username</label>
-            <input
-              type="text"
-              name="lastName"
-              value={registeredUserData.username}
-              onChange={usernameChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>E-Mail</label>
-            <input
-              type="text"
-              name="lastName"
-              value={registeredUserData.email}
-              onChange={emailChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Password</label>
-            <input
-              type="password"
-              name="registerPass"
-              value={registeredUserData.password}
-              onChange={passwordChangeHandler}
-              minLength={6}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Password Again</label>
-            <input
-              type="password"
-              name="registerPassAgain"
-              minLength={6}
-              required
-            />
-          </div>
-          <div className="button-container">
-            <input type="submit" value="Register" />
-          </div>
-        </form>
-        <div className="button-container">
-          <input type="submit" value="Back" onClick={backToLoginHandler} />
+    <Card>
+      <div className="title">Login</div>
+      <form onSubmit={submitHandler}>
+        <div className="input-container">
+          <label>First Name</label>
+          <input
+            type="text"
+            name="firstName"
+            value={registeredUserData.firstName}
+            onChange={firstNameChangeHandler}
+            required
+          />
         </div>
-      </UserFormCard>
-    </div>
+        <div className="input-container">
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="lastName"
+            value={registeredUserData.lastName}
+            onChange={lastNameChangeHandler}
+            required
+          />
+        </div>
+        <div className="input-container">
+          <label>Username</label>
+          <input
+            type="text"
+            name="lastName"
+            value={registeredUserData.username}
+            onChange={usernameChangeHandler}
+            required
+          />
+        </div>
+        <div className="input-container">
+          <label>E-Mail</label>
+          <input
+            type="text"
+            name="lastName"
+            value={registeredUserData.email}
+            onChange={emailChangeHandler}
+            required
+          />
+        </div>
+        <div className="input-container">
+          <label>Password</label>
+          <input
+            type="password"
+            name="registerPass"
+            value={registeredUserData.password}
+            onChange={passwordChangeHandler}
+            minLength={6}
+            required
+          />
+        </div>
+        <div className="input-container">
+          <label>Password Again</label>
+          <input
+            type="password"
+            name="registerPassAgain"
+            minLength={6}
+            required
+          />
+        </div>
+        <div className="button-container">
+          <input type="submit" value="Register" />
+        </div>
+      </form>
+      <div className="button-container">
+        <input type="submit" value="Back" onClick={backToLoginHandler} />
+      </div>
+    </Card>
   );
 };
 
