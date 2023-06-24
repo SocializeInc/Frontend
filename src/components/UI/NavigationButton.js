@@ -5,7 +5,7 @@ const NavigationButton = (props) => {
 
   return (
     <div className={classes}>
-      <div className="title">{props.title}</div>
+      <div className="title" onClick={props.goTo}>{props.title}</div>
     </div>
   );
 };

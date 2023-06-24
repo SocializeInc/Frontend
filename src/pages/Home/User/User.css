@@ -1,8 +1,10 @@
 .user{
   display: flex;
   flex-direction: row;
-  box-shadow: none;
+  border-radius: 1rem;
+  background-color: white;
   padding: 0.5rem 1rem 0.5rem 1rem;
+  cursor: pointer;
 }
 
 .user:hover{

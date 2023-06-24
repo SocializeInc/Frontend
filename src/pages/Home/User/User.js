@@ -1,17 +1,19 @@
-import MainBlock from '../../../components/UI/MainBlock';
-import Card from '../../../components/UI/Card'; 
-import './User.css';
+import MainBlock from "../../../components/UI/MainBlock";
+
+import "./User.css";
+import { useNavigate } from "react-router-dom";
 
 const User = () => {
+  const logo = require("../../../assets/user.png");
+  const navigate = useNavigate();
+  const handleOnProfileClick = () => navigate("/profile");
 
-  const logo = require('../../../assets/user.png');
-
-  return(
+  return (
     <MainBlock>
-      <Card className='user'>
-        <img className='photo' src={logo} alt='User logo'/>
-        <div className='username'>adamdara</div>
-      </Card>
+      <div className="user" onClick={handleOnProfileClick}>
+        <img className="photo" src={logo} alt="User logo" />
+        <div className="username">adamdara</div>
+      </div>
     </MainBlock>
   );
 };
