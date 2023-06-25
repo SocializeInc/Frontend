@@ -1,17 +1,21 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 
-import "./PostCreator.css";
+import BlockButton from "../../../components/UI/BlockButton";
 
-const PostCreator = () => {
+import styles from "./PostCreator.module.css";
+
+const PostCreator = (props) => {
   const [postContent, setPostContent] = useState("");
 
   const contentHandler = (event) => {
     setPostContent(event.target.value);
   };
 
+  const classes = props.className;
+
   return (
-    <Fragment>
-      <div className="post-header">Make a post</div>
+    <div className={classes}>
+      <div className={styles.post_header}>Make a post</div>
       <textarea
         name="postContent"
         rows="5"
@@ -20,11 +24,11 @@ const PostCreator = () => {
         value={postContent}
         onChange={contentHandler}
       ></textarea>
-      <div className="post-functions">
-        <div className="text-extra">/TODO: csatolások/</div>
-        <div id="postButton">Post</div>
+      <div className={styles.post_functions}>
+        <div className={styles.text_extra}>/TODO: csatolások/</div>
+        <BlockButton id="postButton" className={styles.postButton}>Post</BlockButton>
       </div>
-    </Fragment>
+    </div>
   );
 };
 
