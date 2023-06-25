@@ -5,7 +5,7 @@ textarea {
   border: none;
   overflow: auto;
   outline: none;
-  padding-bottom: 2rem;
+  padding: 1.5rem 1rem;
 }
 
 textarea::placeholder {
@@ -13,38 +13,38 @@ textarea::placeholder {
   text-align: center;
 }
 
+textarea:focus::placeholder {
+  color: transparent;
+}
+
 textarea::-ms-value {
   font-size: 1.2rem;
 }
 
-.post-header {
-  text-align: center;
+.post_header {
   font-size: 2rem;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
 }
 
-.post-functions{
+.post_functions{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
 }
 
-.text-extra{
+.text_extra{
   width: 50%;
   font-size: 1.2rem;
   text-align: center;
   padding: 1rem 0 1rem 0;
 }
 
-#postButton {
+.postButton {
   width: 50%;
-  font-size: 1.2rem;
-  text-align: center;
-  padding: 1rem 0 1rem 0;
 }
 
-#postButton:hover{
+.postButton:hover{
   background-color: rgb(209, 209, 209, 0.8);
 }
