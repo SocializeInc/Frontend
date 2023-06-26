@@ -4,3 +4,7 @@
   text-align: center;
   padding: 1rem 0 1rem 0;
 }
+
+.block_button:hover{
+  background-color: rgb(209, 209, 209, 0.8);
+}
