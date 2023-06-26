@@ -1,11 +1,15 @@
 import React from 'react';
 
+import MainBlock from '../../components/UI/MainBlock';
+
+import styles from './SpecificHomePage.module.css';
+
 const SpecificHomePage = (props) => {
   const ComponentToShow = props.page;
     return(
-      <div>
+      <MainBlock className={styles.middle_block}>
         <ComponentToShow />
-      </div>
+      </MainBlock>
     );
 }
 
