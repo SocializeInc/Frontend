@@ -6,7 +6,7 @@ import styles from "./Feed.module.css";
 
 const Feed = () => {
   return (
-    <MainBlock className={styles.feed_block} >
+    <MainBlock>
       <SearchBar />
       <PostCreator className={styles.content_block} />
     </MainBlock>
