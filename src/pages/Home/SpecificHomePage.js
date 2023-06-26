@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MainBlock from '../../components/UI/MainBlock';
-
 import styles from './SpecificHomePage.module.css';
 
 const SpecificHomePage = (props) => {
