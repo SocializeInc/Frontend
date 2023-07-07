@@ -1,0 +1,8 @@
+.content_header{
+  display: flex;
+  flex-direction: row;
+}
+
+.content_action{
+  width: 50%;
+}

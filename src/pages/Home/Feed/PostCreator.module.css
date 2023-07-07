@@ -6,6 +6,7 @@ textarea {
   overflow: auto;
   outline: none;
   padding: 1.5rem 1rem;
+  width: 60%;
 }
 
 textarea::placeholder {
@@ -43,8 +44,4 @@ textarea::-ms-value {
 
 .postButton {
   width: 50%;
-}
-
-.postButton:hover{
-  background-color: rgb(209, 209, 209, 0.8);
 }

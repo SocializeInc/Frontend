@@ -1,0 +1,73 @@
+.photo_container{
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  width: calc(100%/3);
+}
+
+.profilePhoto{
+  width:100%;
+  border-radius: 50%;
+  opacity: 1;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle_button{
+  background-color: #ff9966;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  transition: .3s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.middle_button:hover{
+  background-color: rgb(209, 209, 209, 0.8) ;
+  opacity: 1;
+}
+
+.middle_button:hover .button_text{
+  color: black;
+}
+
+.button_text{
+  color: white;
+  font-size: 1rem;
+}
+
+.photo_container:hover .profilePhoto {
+  opacity: 0.3;
+}
+
+.photo_container:hover .middle_button {
+  opacity: 1;
+}
+
+.information_user{
+  text-align: start;
+}
+
+.information_block{
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
