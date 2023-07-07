@@ -1,0 +1,21 @@
+.partner_header{
+  display: flex;
+  padding: 1rem 2rem 1rem 2rem;
+  font-size: 1.5rem;
+  outline: solid rgb(209, 209, 209, 0.8) 1px;
+}
+
+.partner_name{
+  justify-content: start;
+}
+
+.back{
+  /*TODO:
+  align-self: flex-end;
+  */
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  min-width: 0;
+}

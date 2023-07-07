@@ -6,6 +6,7 @@ import Home from "./pages/Home/Home";
 import "./App.css";
 import Feed from "./pages/Home/Feed/Feed";
 import Profile from "./pages/Profile/Profile";
+import MessagePage from "./pages/Messages/MessagePage";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route exact path="/login" element={<Auth />} />
       <Route exact path="/home" element={<Home main={Feed}/>} />
       <Route exact path="/profile" element={<Home main={Profile}/>} />
+      <Route exact path="/messages" element={<Home main={MessagePage}/>} />
     </Routes>
   );
 }

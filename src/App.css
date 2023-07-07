@@ -4,6 +4,8 @@
   background-color: #f8f9fd;
 }
 
+input, textarea, button {font-family: inherit}
+
 input{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
