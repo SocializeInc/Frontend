@@ -12,7 +12,7 @@ import SendMessage from "./SendMessage.js";
 
 import styles from './ChatBox.module.css';
 
-const ChatBox = () => {
+  const ChatBox = () => {
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
 
@@ -42,7 +42,7 @@ const ChatBox = () => {
         <span className={styles.partner_name}>Other user</span>
         <button class={styles.back}>Back</button>
       </div>
-      <div>
+      <div className={styles.messages}>
         {messages?.map((message) => (
           <Message key={message.id} message={message} />
         ))}
