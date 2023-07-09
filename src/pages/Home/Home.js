@@ -1,14 +1,18 @@
 import Navigation from '../../pages/Home/Navigation/Navigation';
-import Feed from '../../pages/Home/Feed/Feed';
 import User from '../../pages/Home/User/User';
+
+import SpecificHomePage from './SpecificHomePage';
+
+import React from 'react';
 
 import './Home.css';
 
-const Home = () => {
+const Home = (props) => {
+
   return(
     <div className='main-column-3'>
       <Navigation />
-      <Feed />
+      <SpecificHomePage page={props.main} />
       <User />
     </div>
   );

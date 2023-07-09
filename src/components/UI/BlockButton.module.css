@@ -1,0 +1,11 @@
+.block_button{
+  outline: solid rgb(209, 209, 209, 0.8) 1px;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+  cursor: pointer;
+}
+
+.block_button:hover{
+  background-color: rgb(209, 209, 209, 0.8);
+}

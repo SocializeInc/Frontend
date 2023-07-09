@@ -1,0 +1,52 @@
+.partner_header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.5rem 1rem 1rem;
+  font-size: 1.5rem;
+  outline: solid rgb(209, 209, 209, 0.8) 1px;
+}
+
+.back{
+  display: inherit;
+  flex-direction: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.back_logo{
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  background-color: transparent;
+  transition: linear;
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
+.back_logo:hover{
+  background-color: rgb(209, 209, 209, 0.8);
+  transition: linear;
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
+.messages_container{
+  display: flex;
+  overflow-y: auto;
+}
+
+.messages{
+  flex-shrink: 0;
+  margin: 1rem;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-end;
+  /* justify-content: flex-end; */
+  height: 75vh;
+  min-height: 0;
+}
