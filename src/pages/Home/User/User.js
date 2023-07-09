@@ -20,7 +20,7 @@ const User = () => {
 
   return (
     <MainBlock>
-      <p>Welcome back</p>
+      <p className="welcome_message">Welcome back</p>
       <div onMouseLeave={handleLeaveUserMenu}>
         <div className="user user-row" onMouseOver={handleHoverUserMenu}>
           <img className="photo" src={logo} alt="User logo" />
