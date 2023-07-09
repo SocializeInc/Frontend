@@ -1,10 +1,8 @@
-import styles from './Message.module.css';
+import styles from "./Message.module.css";
 
 const Message = ({ message }) => {
-const classes = styles.message_body + ' ' + message.className 
-
   return (
-    <div className={classes}>
+    <div className={styles.message_body} id={message.id}>
       {/* <p>Adam</p> */}
       <p>{message.text}</p>
     </div>

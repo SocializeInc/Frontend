@@ -34,8 +34,19 @@
   transition-duration: 200ms;
 }
 
-.messages{
+.messages_container{
   display: flex;
+  overflow-y: auto;
+}
+
+.messages{
+  flex-shrink: 0;
+  margin: 1rem;
+  display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: flex-end;
+  /* justify-content: flex-end; */
+  height: 75vh;
+  min-height: 0;
 }

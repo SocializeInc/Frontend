@@ -12,7 +12,7 @@ import SendMessage from "./SendMessage.js";
 
 import styles from "./ChatBox.module.css";
 
-const ChatBox = ({backToUsers}) => {
+const ChatBox = ({ backToUsers }) => {
   const backLogo = require("../../../assets/back_arrow.png");
 
   const [messages, setMessages] = useState([]);
@@ -42,14 +42,20 @@ const ChatBox = ({backToUsers}) => {
     <>
       <div className={styles.partner_header}>
         <span className={styles.partner_name}>Random user</span>
-        <button id="Back" className={styles.back} onClick={() => backToUsers(true)} >
+        <button
+          id="Back"
+          className={styles.back}
+          onClick={() => backToUsers(true)}
+        >
           <img className={styles.back_logo} src={backLogo} alt="Back"></img>
         </button>
       </div>
-      <div className={styles.messages}>
-        {messages?.map((message) => (
-          <Message key={message.id} message={message} />
-        ))}
+      <div className={styles.messages_container}>
+        <div className={styles.messages}>
+          {messages?.map((message) => (
+            <Message className={message} message={message} />
+          ))}
+        </div>
       </div>
       {/* when a new message enters the chat, the screen scrolls down to the scroll div */}
       <span ref={scroll}></span>
