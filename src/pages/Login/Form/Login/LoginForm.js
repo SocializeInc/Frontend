@@ -4,6 +4,8 @@ import Card from "../../../../components/UI/Card";
 
 import "./LoginForm.css";
 
+import { useNavigate } from "react-router-dom";
+
 const LoginForm = (props) => {
   const [isLoginSubmitted, setLoginIsSubmitted] = useState(false);
 
@@ -29,35 +31,45 @@ const LoginForm = (props) => {
     props.onChangeRegister(true);
   };
 
-  //TODO: Give JSON forward
+  //Give JSON forward
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const userFromDatabase = props.users.find(
-      (user) => user.username === loginUserData.password
-    );
+    (async () => {
+      await fetch("http://localhost:8080/socialize/api/auth/login", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "post",
+        body: JSON.stringify({
+          username: loginUserData.username,
+          password: loginUserData.password,
+        }),
+      })
+      .then(response => response.json())
+      .then(response => {
+      
+          (response.accessToken) ? setLoginIsSubmitted(true) : setLoginIsSubmitted(false);
+      
+      })
+        .then((resp) => resp.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    })();
 
-    if (userFromDatabase) {
-      if (userFromDatabase.password !== loginUserData.password) {
-        console.log("invalid password");
-      } else {
-        setLoginIsSubmitted(true);
-      }
-    } else {
-      console.log("username not found");
-    }
-
-    const userData = {
-      username: loginUserData.username,
-      password: loginUserData.password,
-    };
-
-    //TODO: send userData JSON to backend
     setLoginUserData({
       username: "",
       password: "",
     });
   };
+
+  const navigate = useNavigate();
+
+  setTimeout(1000);
+  if (isLoginSubmitted) {
+    navigate("/home");
+  }
+
 
   return (
     <Card>
