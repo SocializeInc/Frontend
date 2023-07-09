@@ -4,8 +4,10 @@ const BlockButton = (props) => {
 
   const classes = props.className + ' ' + styles.block_button
 
+  const click = props.onClick
+
   return(
-    <div id={props.id} className={classes}>{props.children}</div>
+    <div id={props.id} className={classes} onClick={click}>{props.children}</div>
   );
 };
 

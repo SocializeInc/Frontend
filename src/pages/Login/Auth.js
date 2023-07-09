@@ -14,7 +14,7 @@ const database = [
 const Auth = () => {
   return (
     <div className="app">
-      <h1>Socialize</h1>
+      <h1 className="main_title">Socialize</h1>
       <Form users={database} />
     </div>
   );

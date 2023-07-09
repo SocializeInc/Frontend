@@ -1,0 +1,8 @@
+.message_body{
+  padding: 0 0.5rem;
+  margin: 0.3rem 0;
+  background-color: rgb(3, 123, 252);
+  color: white;
+  border-radius: 1.2rem;
+  width: fit-content;
+}
