@@ -1,13 +1,16 @@
+import ChatBox from "../Chat/ChatBox";
+
 import BlockButton from "../../../components/UI/BlockButton";
 
-const UserBox = () => {
-  return(
+const UserBox = ({ chatPartner }) => {
+
+  return (
     <div>
       <h1>Messages</h1>
-      //TODO: dinamikusan az adatbázisból lekérdezve foreach-el fogja kiíírni az összes chatban lévő usert
-      //példa kedvéért beégetve egy
       <div>
-        <BlockButton>Random User</BlockButton>
+        <BlockButton onClick={() => chatPartner(ChatBox)}>
+          Random User
+        </BlockButton>
       </div>
     </div>
   );

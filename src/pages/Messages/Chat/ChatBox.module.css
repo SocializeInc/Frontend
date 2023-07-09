@@ -1,23 +1,37 @@
 .partner_header{
   display: flex;
-  padding: 1rem 2rem 1rem 2rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0.5rem 1rem 1rem;
   font-size: 1.5rem;
   outline: solid rgb(209, 209, 209, 0.8) 1px;
 }
 
-.partner_name{
-  justify-content: start;
+.back{
+  display: inherit;
+  flex-direction: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-.back{
-  /*TODO:
-  align-self: flex-end;
-  */
+.back_logo{
+  width: 1.2rem;
+  height: 1.2rem;
+  padding: 0.5rem;
+  border-radius: 2rem;
   background-color: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  min-width: 0;
+  transition: linear;
+  transition-property: background-color;
+  transition-duration: 200ms;
+}
+
+.back_logo:hover{
+  background-color: rgb(209, 209, 209, 0.8);
+  transition: linear;
+  transition-property: background-color;
+  transition-duration: 200ms;
 }
 
 .messages{

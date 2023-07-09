@@ -33,6 +33,7 @@
   padding: 0.3rem;
   border-radius: 1rem;
   cursor: pointer;
+  width: 100%;
 }
 
 .user_option:hover{

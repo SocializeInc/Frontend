@@ -1,13 +1,27 @@
-import ChatBox from "./Chat/ChatBox";
+import { useState } from "react";
 import UserBox from "./Rooms/UserBox";
+import ChatBox from "./Chat/ChatBox";
 
-const Message = () => {
+const MessagePage = () => {
+  const [partnerValid, setPartnerValid] = useState(false);
+  let Partner = null;
+  if (partnerValid) {
+    Partner = ChatBox;
+  }
 
-  return(
-    <>
-      <ChatBox />
-    </>
-  );
+  const backToUsers = (b) =>{
+    if (b){
+      setPartnerValid(false);
+    }
+  };
+
+  const chatPartner = (p) => {
+    if (p !== UserBox) {
+      setPartnerValid(true);
+    }
+  };
+
+  return <>{partnerValid ? <Partner backToUsers={backToUsers}/> : <UserBox chatPartner={chatPartner} />}</>;
 };
 
-export default Message;
+export default MessagePage;

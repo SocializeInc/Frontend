@@ -10,9 +10,11 @@ import { db } from "../../../firebase";
 import Message from "../../../components/UI/Message";
 import SendMessage from "./SendMessage.js";
 
-import styles from './ChatBox.module.css';
+import styles from "./ChatBox.module.css";
 
-  const ChatBox = () => {
+const ChatBox = ({backToUsers}) => {
+  const backLogo = require("../../../assets/back_arrow.png");
+
   const [messages, setMessages] = useState([]);
   const scroll = useRef();
 
@@ -39,8 +41,10 @@ import styles from './ChatBox.module.css';
   return (
     <>
       <div className={styles.partner_header}>
-        <span className={styles.partner_name}>Other user</span>
-        <button class={styles.back}>Back</button>
+        <span className={styles.partner_name}>Random user</span>
+        <button id="Back" className={styles.back} onClick={() => backToUsers(true)} >
+          <img className={styles.back_logo} src={backLogo} alt="Back"></img>
+        </button>
       </div>
       <div className={styles.messages}>
         {messages?.map((message) => (
