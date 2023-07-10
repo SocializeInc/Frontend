@@ -6,9 +6,11 @@ import "./LoginForm.css";
 
 import { useNavigate } from "react-router-dom";
 
+import useCookie from "react-use-cookie";
+
 const LoginForm = (props) => {
   const navigate = useNavigate();
-
+  const [username, setUsername] = useCookie("username", "");
   const [isLoginSubmitted, setLoginIsSubmitted] = useState(false);
 
   const [loginUserData, setLoginUserData] = useState({
@@ -48,17 +50,18 @@ const LoginForm = (props) => {
           password: loginUserData.password,
         }),
       })
-      .then(response => response.json())
-      .then(response => {
-      
-          (response.accessToken) ? setLoginIsSubmitted(true) : setLoginIsSubmitted(false);
-      
-      })
+        .then((response) => response.json())
+        .then((response) => {
+          response.accessToken
+            ? setLoginIsSubmitted(true)
+            : setLoginIsSubmitted(false);
+        })
         .then((resp) => resp.json())
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
     })();
 
+    setUsername(loginUserData.username);
     setLoginUserData({
       username: "",
       password: "",
@@ -70,7 +73,7 @@ const LoginForm = (props) => {
       navigate("/home");
     }
   }, [isLoginSubmitted, navigate]);
-  
+
   return (
     <Card>
       <div className="title">Login</div>
