@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "../../../../components/UI/Card";
 
 import "./LoginForm.css";
 
+import { useNavigate } from "react-router-dom";
+
+import useCookie from "react-use-cookie";
+
 const LoginForm = (props) => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useCookie("username", "");
   const [isLoginSubmitted, setLoginIsSubmitted] = useState(false);
 
   const [loginUserData, setLoginUserData] = useState({
@@ -29,35 +35,44 @@ const LoginForm = (props) => {
     props.onChangeRegister(true);
   };
 
-  //TODO: Give JSON forward
+  //Give JSON forward
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const userFromDatabase = props.users.find(
-      (user) => user.username === loginUserData.password
-    );
+    (async () => {
+      await fetch("http://localhost:8080/socialize/api/auth/login", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "post",
+        body: JSON.stringify({
+          username: loginUserData.username,
+          password: loginUserData.password,
+        }),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          response.accessToken
+            ? setLoginIsSubmitted(true)
+            : setLoginIsSubmitted(false);
+        })
+        .then((resp) => resp.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+    })();
 
-    if (userFromDatabase) {
-      if (userFromDatabase.password !== loginUserData.password) {
-        console.log("invalid password");
-      } else {
-        setLoginIsSubmitted(true);
-      }
-    } else {
-      console.log("username not found");
-    }
-
-    const userData = {
-      username: loginUserData.username,
-      password: loginUserData.password,
-    };
-
-    //TODO: send userData JSON to backend
+    setUsername(loginUserData.username);
     setLoginUserData({
       username: "",
       password: "",
     });
   };
+
+  useEffect(() => {
+    if (isLoginSubmitted) {
+      navigate("/home");
+    }
+  }, [isLoginSubmitted, navigate]);
 
   return (
     <Card>
