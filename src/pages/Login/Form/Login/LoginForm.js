@@ -6,11 +6,8 @@ import "./LoginForm.css";
 
 import { useNavigate } from "react-router-dom";
 
-import useCookie from "react-use-cookie";
-
 const LoginForm = (props) => {
   const navigate = useNavigate();
-  const [username, setUsername] = useCookie("username", "");
   const [isLoginSubmitted, setLoginIsSubmitted] = useState(false);
 
   const [loginUserData, setLoginUserData] = useState({
@@ -61,7 +58,6 @@ const LoginForm = (props) => {
         .catch((err) => console.log(err));
     })();
 
-    setUsername(loginUserData.username);
     setLoginUserData({
       username: "",
       password: "",
