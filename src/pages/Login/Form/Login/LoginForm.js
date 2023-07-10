@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "../../../../components/UI/Card";
 
@@ -7,6 +7,8 @@ import "./LoginForm.css";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = (props) => {
+  const navigate = useNavigate();
+
   const [isLoginSubmitted, setLoginIsSubmitted] = useState(false);
 
   const [loginUserData, setLoginUserData] = useState({
@@ -63,14 +65,12 @@ const LoginForm = (props) => {
     });
   };
 
-  const navigate = useNavigate();
-
-  setTimeout(1000);
-  if (isLoginSubmitted) {
-    navigate("/home");
-  }
-
-
+  useEffect(() => {
+    if (isLoginSubmitted) {
+      navigate("/home");
+    }
+  }, [isLoginSubmitted, navigate]);
+  
   return (
     <Card>
       <div className="title">Login</div>

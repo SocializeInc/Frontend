@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../../../components/UI/Card";
 
 import "./RegisterForm.css";
+
+import PopupModal from "../../../../components/UI/PopupModal";
 
 const RegisterForm = (props) => {
   const [isRegisterSubmitted, setRegisterIsSubmitted] = useState(false);
@@ -66,170 +68,186 @@ const RegisterForm = (props) => {
     });
   };
 
+  const [popup, setPopup] = useState(null);
+
   //Give JSON forward
   const submitHandler = (event) => {
     event.preventDefault();
 
-    (async () => {
-      await fetch("http://localhost:8080/socialize/api/auth/signup", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "post",
-        body: JSON.stringify({
-          username: registeredUserData.username,
-          firstname: registeredUserData.firstname,
-          lastname: registeredUserData.lastname,
-          email: registeredUserData.email,
-          password: registeredUserData.password,
-          country: registeredUserData.country,
-          birthDate: registeredUserData.birthDate,
-          role: ["adamdara", "user"],
-        }),
-      })
-        // .then((response) => response.json())
-        // .then((response) => {
-        //   response.accessToken
-        //     ? setRegisterIsSubmitted(true)
-        //     : setRegisterIsSubmitted(false);
-        // })
-        .then((response) => response.json())
-        .then((response) => {
-          response.message === "User registered successfully!"
-            ? setRegisterIsSubmitted(true)
-            : setRegisterIsSubmitted(false);
+    if (registeredUserData.password === registeredUserData.passwordAgain) {
+      (async () => {
+        await fetch("http://localhost:8080/socialize/api/auth/signup", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "post",
+          body: JSON.stringify({
+            username: registeredUserData.username,
+            firstname: registeredUserData.firstname,
+            lastname: registeredUserData.lastname,
+            email: registeredUserData.email,
+            password: registeredUserData.password,
+            country: registeredUserData.country,
+            birthDate: registeredUserData.birthDate,
+            role: [registeredUserData.username, "user"],
+          }),
         })
-        .catch((err) => console.log(err));
-    })();
-
-    // setRegisteredUserData({
-    //   username: "",
-    //   firstname: "",
-    //   lastname: "",
-    //   email: "",
-    //   password: "",
-    //   passwordAgain: "",
-    //   country: "",
-    //   birthDate: "",
-    //   role: new Set(),
-    // });
+          .then((response) => response.json())
+          .then((response) => {
+            response.message === "User registered successfully!"
+              ? setRegisterIsSubmitted(true)
+              : setRegisterIsSubmitted(false);
+          })
+          .catch((err) => console.log(err));
+      })();
+    } else {
+      setPopup({
+        title: "Invalid password",
+        message: "The two passwords are not matching.",
+        buttonText: "Confirm",
+      });
+    }
 
     setRegisteredUserData({
-      username: registeredUserData.username,
-      firstname: registeredUserData.firstname,
-      lastname: registeredUserData.lastname,
-      email: registeredUserData.email,
-      password: registeredUserData.password,
-      country: registeredUserData.country,
-      birthDate: registeredUserData.birthDate,
+      username: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+      passwordAgain: "",
+      country: "",
+      birthDate: "",
       role: "",
     });
   };
 
-  //TODO: Give user a successful register text
-  setTimeout(1000);
-  if (isRegisterSubmitted) {
+  useEffect(() => {
+    if (isRegisterSubmitted) {
+      setPopup({
+        title: "Successful registration",
+        message: "You successfully registered your account.",
+        buttonText: "OK"
+      });
+    }
+  }, [isRegisterSubmitted, props]);
+
+  const closePopup = () => {
+    if (isRegisterSubmitted) {
     props.onChangeRegister(false);
-  }
+      
+    }
+    setPopup(null);
+  };
 
   const backToLoginHandler = (event) => {
     event.preventDefault();
+    props.onChangeRegister(false);
   };
 
   return (
-    <Card>
-      <div className="title">Register</div>
-      <form onSubmit={submitHandler}>
-        <div className="input-container">
-          <label>First Name</label>
-          <input
-            type="text"
-            name="firstName"
-            value={registeredUserData.firstname}
-            onChange={firstNameChangeHandler}
-            required
-          />
-        </div>
-        <div className="input-container">
-          <label>Last Name</label>
-          <input
-            type="text"
-            name="lastName"
-            value={registeredUserData.lastname}
-            onChange={lastNameChangeHandler}
-            required
-          />
-        </div>
-        <div className="input-container">
-          <label>Username</label>
-          <input
-            type="text"
-            name="lastName"
-            value={registeredUserData.username}
-            onChange={usernameChangeHandler}
-            required
-          />
-        </div>
-        <div className="input-container">
-          <label>E-Mail</label>
-          <input
-            type="text"
-            name="lastName"
-            value={registeredUserData.email}
-            onChange={emailChangeHandler}
-            required
-          />
-        </div>
-        <div className="input-container">
-          <label>Password</label>
-          <input
-            type="password"
-            name="registerPass"
-            value={registeredUserData.password}
-            onChange={passwordChangeHandler}
-            minLength={6}
-            required
-          />
-        </div>
-        <div className="input-container">
-          <label>Password Again</label>
-          <input
-            type="password"
-            name="registerPassAgain"
-            value={registeredUserData.passwordAgain}
-            onChange={passwordAgainChangeHandler}
-            minLength={6}
-            required
-          />
-        </div>
-        <div className="input-container">
-          <label>Country</label>
-          <input
-            type="text"
-            name="country"
-            value={registeredUserData.country}
-            onChange={countryChangeHandler}
-            required
-          />
-        </div>
-        <div className="input-container">
-          <label>Birth Date</label>
-          <input
-            type="text"
-            name="birthDate"
-            value={registeredUserData.birthDate}
-            onChange={birthDateChangeHandler}
-            required
-          />
-        </div>
+    <>
+      {popup && (
+        <PopupModal
+          title={popup.title}
+          message={popup.message}
+          buttonText={popup.buttonText}
+          onConfirm={closePopup}
+        />
+      )}
+      <Card>
+        <div className="title">Register</div>
+        <form onSubmit={submitHandler}>
+          <div className="input-container">
+            <label>First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={registeredUserData.firstname}
+              onChange={firstNameChangeHandler}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label>Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={registeredUserData.lastname}
+              onChange={lastNameChangeHandler}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label>Username</label>
+            <input
+              type="text"
+              name="lastName"
+              value={registeredUserData.username}
+              onChange={usernameChangeHandler}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label>E-Mail</label>
+            <input
+              type="text"
+              name="lastName"
+              value={registeredUserData.email}
+              onChange={emailChangeHandler}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label>Password</label>
+            <input
+              type="password"
+              name="registerPass"
+              value={registeredUserData.password}
+              onChange={passwordChangeHandler}
+              minLength={6}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label>Password Again</label>
+            <input
+              type="password"
+              name="registerPassAgain"
+              value={registeredUserData.passwordAgain}
+              onChange={passwordAgainChangeHandler}
+              minLength={6}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label>Country</label>
+            <input
+              type="text"
+              name="country"
+              value={registeredUserData.country}
+              onChange={countryChangeHandler}
+              required
+            />
+          </div>
+          <div className="input-container">
+            <label>Birth Date</label>
+            <input
+              type="text"
+              name="birthDate"
+              value={registeredUserData.birthDate}
+              onChange={birthDateChangeHandler}
+              required
+            />
+          </div>
+          <div className="button-container">
+            <input type="submit" value="Register" />
+          </div>
+        </form>
         <div className="button-container">
-          <input type="submit" value="Register" />
+          <input type="submit" value="Back" onClick={backToLoginHandler} />
         </div>
-      </form>
-      <div className="button-container">
-        <input type="submit" value="Back" onClick={backToLoginHandler} />
-      </div>
-    </Card>
+      </Card>
+    </>
   );
 };
 
