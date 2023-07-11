@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import LoginForm from "./Login/LoginForm";
 import RegisterForm from "./Register/RegisterForm";
-import './Form.css';
 
 const Form = () => {
 
@@ -13,13 +12,13 @@ const Form = () => {
   };
 
   return(
-    <div>{
+    <>{
       isRegisterPage
       ? <RegisterForm 
         onChangeRegister={registeredCheckHandler} />
       : <LoginForm
         onChangeRegister={registeredCheckHandler} />}
-    </div>
+    </>
   );
 };
 

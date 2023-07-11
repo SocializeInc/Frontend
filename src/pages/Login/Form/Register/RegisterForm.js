@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Card from "../../../../components/UI/Card";
-
-import "./RegisterForm.css";
-
 import PopupModal from "../../../../components/UI/PopupModal";
+
+// import multiple files with css modules
+import inputContainer from './RegisterForm.module.css'
+import formStyles from '../Form.module.css';
+let styles = {};
+Object.assign(styles, inputContainer, formStyles)
+
+
 
 const RegisterForm = (props) => {
   const [isRegisterSubmitted, setRegisterIsSubmitted] = useState(false);
@@ -126,15 +131,14 @@ const RegisterForm = (props) => {
       setPopup({
         title: "Successful registration",
         message: "You successfully registered your account.",
-        buttonText: "OK"
+        buttonText: "OK",
       });
     }
   }, [isRegisterSubmitted, props]);
 
   const closePopup = () => {
     if (isRegisterSubmitted) {
-    props.onChangeRegister(false);
-      
+      props.onChangeRegister(false);
     }
     setPopup(null);
   };
@@ -154,97 +158,115 @@ const RegisterForm = (props) => {
           onConfirm={closePopup}
         />
       )}
-      <Card>
-        <div className="title">Register</div>
+      <Card className={styles.login}>
+        <div className={styles.title}>Register</div>
         <form onSubmit={submitHandler}>
-          <div className="input-container">
-            <label>First Name</label>
-            <input
-              type="text"
-              name="firstName"
-              value={registeredUserData.firstname}
-              onChange={firstNameChangeHandler}
-              required
-            />
+          <div className={styles.input_block_row}>
+            <div className={styles.input_block_column}>
+              <div className={styles.input_container}>
+                <label>First Name</label>
+                <input
+                  id="FirstName"
+                  type="text"
+                  name="firstName"
+                  value={registeredUserData.firstname}
+                  onChange={firstNameChangeHandler}
+                  required
+                />
+              </div>
+              <div className={styles.input_container}>
+                <label>Last Name</label>
+                <input
+                  id="LastName"
+                  type="text"
+                  name="lastName"
+                  value={registeredUserData.lastname}
+                  onChange={lastNameChangeHandler}
+                  required
+                />
+              </div>
+              <div className={styles.input_container}>
+                <label>Username</label>
+                <input
+                  id="Username"
+                  type="text"
+                  name="lastName"
+                  value={registeredUserData.username}
+                  onChange={usernameChangeHandler}
+                  required
+                />
+              </div>
+              <div className={styles.input_container}>
+                <label>E-Mail</label>
+                <input
+                  id="Email"
+                  type="text"
+                  name="lastName"
+                  value={registeredUserData.email}
+                  onChange={emailChangeHandler}
+                  required
+                />
+              </div>
+            </div>
+            <div className={styles.input_block_column}>
+              <div className={styles.input_container}>
+                <label>Password</label>
+                <input
+                  id="Password"
+                  type="password"
+                  name="registerPass"
+                  value={registeredUserData.password}
+                  onChange={passwordChangeHandler}
+                  minLength={6}
+                  required
+                />
+              </div>
+              <div className={styles.input_container}>
+                <label>Password Again</label>
+                <input
+                  id="PasswordAgain"
+                  type="password"
+                  name="registerPassAgain"
+                  value={registeredUserData.passwordAgain}
+                  onChange={passwordAgainChangeHandler}
+                  minLength={6}
+                  required
+                />
+              </div>
+              <div className={styles.input_container}>
+                <label>Country</label>
+                <input
+                  id="Country"
+                  type="text"
+                  name="country"
+                  value={registeredUserData.country}
+                  onChange={countryChangeHandler}
+                  required
+                />
+              </div>
+              <div className={styles.input_container}>
+                <label>Birth Date</label>
+                <input
+                  id="BirthDate"
+                  type="text"
+                  name="birthDate"
+                  value={registeredUserData.birthDate}
+                  onChange={birthDateChangeHandler}
+                  required
+                />
+              </div>
+            </div>
           </div>
-          <div className="input-container">
-            <label>Last Name</label>
-            <input
-              type="text"
-              name="lastName"
-              value={registeredUserData.lastname}
-              onChange={lastNameChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Username</label>
-            <input
-              type="text"
-              name="lastName"
-              value={registeredUserData.username}
-              onChange={usernameChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>E-Mail</label>
-            <input
-              type="text"
-              name="lastName"
-              value={registeredUserData.email}
-              onChange={emailChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Password</label>
-            <input
-              type="password"
-              name="registerPass"
-              value={registeredUserData.password}
-              onChange={passwordChangeHandler}
-              minLength={6}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Password Again</label>
-            <input
-              type="password"
-              name="registerPassAgain"
-              value={registeredUserData.passwordAgain}
-              onChange={passwordAgainChangeHandler}
-              minLength={6}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Country</label>
-            <input
-              type="text"
-              name="country"
-              value={registeredUserData.country}
-              onChange={countryChangeHandler}
-              required
-            />
-          </div>
-          <div className="input-container">
-            <label>Birth Date</label>
-            <input
-              type="text"
-              name="birthDate"
-              value={registeredUserData.birthDate}
-              onChange={birthDateChangeHandler}
-              required
-            />
-          </div>
-          <div className="button-container">
-            <input type="submit" value="Register" />
+          <div className={styles.button_container}>
+            <button id="Register" type="submit">
+              Register
+            </button>
           </div>
         </form>
-        <div className="button-container">
-          <input type="submit" value="Back" onClick={backToLoginHandler} />
+        <div className={styles.button_container}>
+          <button id="Back" type="submit" onClick={backToLoginHandler}>
+            Back
+          </button>
         </div>
       </Card>
     </>

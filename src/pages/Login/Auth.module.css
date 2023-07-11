@@ -1,0 +1,32 @@
+/* Mobile */
+@media only screen and (min-width: 320px){
+  .app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .main_title {
+    margin: 20vmin;
+    color: #ff9966;
+    font-size: 7vmax;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px){
+  .app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: 100vh;
+  }
+  
+  .main_title {
+    margin: 15vmin;
+    color: #ff9966;
+    font-size: 12vmin;
+  }
+}

@@ -1,0 +1,12 @@
+/* Dektop */
+@media only screen and (min-width: 768px) {
+  .input_block_column{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .input_block_row{
+    display: flex;
+    flex-direction: row;
+  }
+}

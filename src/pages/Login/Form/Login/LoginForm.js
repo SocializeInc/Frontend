@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Card from "../../../../components/UI/Card";
 
-import "./LoginForm.css";
+import styles from "../Form.module.css";
 
 import { useNavigate } from "react-router-dom";
 
@@ -71,36 +71,38 @@ const LoginForm = (props) => {
   }, [isLoginSubmitted, navigate]);
 
   return (
-    <Card>
-      <div className="title">Login</div>
+    <Card className={styles.login}>
+      <div className={styles.title}>Login</div>
       <form onSubmit={submitHandler}>
-        <div className="input-container">
+        <div className={styles.input_container}>
           <label>Username</label>
           <input
+            id="Username"
             type="text"
-            name="lastName"
+            name="username"
             value={loginUserData.username}
             onChange={usernameChangeHandler}
             required
           />
         </div>
-        <div className="input-container">
+        <div className={styles.input_container}>
           <label>Password</label>
           <input
+            id="Password"
             type="password"
-            name="registerPass"
+            name="password"
             value={loginUserData.password}
             onChange={passwordChangeHandler}
             minLength={6}
             required
           />
         </div>
-        <div className="button-container">
-          <input type="submit" value="Log In" />
+        <div className={styles.button_container}>
+          <button id="LogIn" type="submit">Log In</button>
         </div>
       </form>
-      <div className="button-container">
-        <input type="submit" value="Register" onClick={registerHandler} />
+      <div className={styles.button_container}>
+        <button id="Register" type="submit" onClick={registerHandler}>Register</button>
       </div>
     </Card>
   );
