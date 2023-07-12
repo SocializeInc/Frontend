@@ -2,9 +2,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: white;
-}
-
-.app {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
@@ -12,4 +9,9 @@ input,
 textarea,
 button {
   font-family: inherit;
+}
+
+.clean_navlink, .clean_navlink:focus, .clean_navlink:hover, .clean_navlink:visited, .clean_navlink:link, .clean_navlink:active{
+  text-decoration: none;
+  color: black;
 }

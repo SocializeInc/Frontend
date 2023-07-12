@@ -1,14 +1,11 @@
 import MainBlock from "../../../components/UI/MainBlock";
 
 import "./User.css";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 const User = () => {
   const logo = require("../../../assets/user.png");
-  const navigate = useNavigate();
-  const handleOnProfileClick = () => navigate("/profile");
-  const handleOnSignOutClick = () => navigate("/login");
 
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const handleHoverUserMenu = () => {
@@ -28,12 +25,12 @@ const User = () => {
         </div>
         {isUserMenuOpen && (
           <div className="user user-open">
-            <a className="user_option" onClick={handleOnProfileClick}>
+            <NavLink className="user_option clean_navlink" to="/profile">
               Profile
-            </a>
-            <a className="user_option" onClick={handleOnSignOutClick}>
+            </NavLink>
+            <NavLink className="user_option clean_navlink" to="/login">
               Sign Out
-            </a>
+            </NavLink>
           </div>
         )}
       </div>

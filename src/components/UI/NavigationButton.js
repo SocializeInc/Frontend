@@ -1,12 +1,11 @@
+import { NavLink } from "react-router-dom";
 import "./NavigationButton.css";
 
 const NavigationButton = (props) => {
-  const classes = "navigation-card " + props.className;
-
   return (
-    <div className={classes}>
-      <div className="title" onClick={props.goTo}>{props.title}</div>
-    </div>
+    <NavLink className="navigation-card clean_navlink" to={props.goTo}>
+      <div className="title">{props.title}</div>
+    </NavLink>
   );
 };
 
