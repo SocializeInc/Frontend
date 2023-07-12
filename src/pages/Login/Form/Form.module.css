@@ -1,9 +1,11 @@
 /* Mobile */
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 320px) and (max-width: 767px) {
   .login {
     display: flex;
     flex-direction: column;
     font-size: 1.5em;
+    margin: 1em;
+    width: 70vmin;
   }
 
   .title {
@@ -41,6 +43,7 @@
   .input_container > input {
     height: 3vmax;
     border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 0.8em;
   }
 }
 
@@ -87,5 +90,6 @@
   .input_container > input {
     height: 3vmin;
     border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 0.8em;
   }
 }
