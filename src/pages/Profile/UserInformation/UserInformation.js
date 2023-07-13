@@ -3,7 +3,7 @@ import styles from "./UserInformation.module.css";
 import InformationBlock from "../../../components/UI/InformationBlock";
 
 const UserInformation = () => {
-  const logo = require("../../../assets/user.png");
+  const logo = require("../../../assets/profile_icon.png");
 
   return (
     <>

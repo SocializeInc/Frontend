@@ -1,4 +1,15 @@
-.block{
-  padding: 0 1rem;
-  margin: 2rem;
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width: 767px){
+  .block{
+    padding: 0.5em;
+    margin: 0.5em;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px){
+  .block{
+    padding: 0 1em;
+    margin: 1em;
+  }
 }

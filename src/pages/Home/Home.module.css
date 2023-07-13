@@ -1,0 +1,29 @@
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width: 767px){
+  .main_column_3 {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content:space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px){
+
+  .main_column_3 {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .main_column_3 > * {
+    width: 20%;
+ }
+
+ .specific_column{
+  width: 60%;
+ }
+}

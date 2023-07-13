@@ -1,0 +1,22 @@
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  
+  .nav_elements{
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px) {
+
+  .nav_elements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vmax;
+  }
+
+  .profile{
+    display: none;
+  }
+}

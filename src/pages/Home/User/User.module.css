@@ -1,0 +1,70 @@
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .block{
+    display: none;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px) {
+  .welcome_message {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .user {
+    display: flex;
+    border-radius: 1rem;
+    background-color: white;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user:hover {
+    transition: ease-out;
+    transition-duration: 300ms;
+  }
+
+  .user_row {
+    flex-direction: row;
+  }
+
+  .user_open {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .user_option {
+    margin: 0.2rem;
+    padding: 0.3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .user_option:hover {
+    background-color: rgb(209, 209, 209, 0.8);
+    transition: linear;
+    transition-property: background-color;
+    transition-duration: 200ms;
+  }
+
+  .photo {
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+  }
+
+  .username {
+    align-items: center;
+    justify-content: center;
+    padding: 0.3rem;
+    width: auto;
+  }
+}

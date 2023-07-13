@@ -1,0 +1,24 @@
+.user_block{
+  display: flex;
+  justify-content: center;
+}
+
+.user{
+  outline: solid rgb(209, 209, 209, 0.8) 1px;
+  border-radius: 1em;
+}
+
+
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width: 767px){
+  .user{
+    width: 80vw;
+  }
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px){
+  .user{
+    width: 80%;
+  }
+}

@@ -1,0 +1,47 @@
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  .navigation_card {
+    border-radius: 2em;
+    background-color: white;
+    margin: 0 1em 0 1em;
+    cursor: pointer;
+  }
+
+  .title{
+    display: none;
+  }
+
+  .icon{
+    width: 1em;
+    height: 1em;
+  }
+
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px) {
+  .navigation_card {
+    border-radius: 3em;
+    background-color: white;
+    margin: 0 2em 0 2em;
+    cursor: pointer;
+    width: fit-content;
+  }
+
+  .navigation_card:hover {
+    background-color: rgb(209, 209, 209, 0.8);
+    transition: linear;
+    transition-property: background-color;
+    transition-duration: 200ms;
+  }
+
+  .title {
+    font-size: 1.5em;
+    padding: 1em;
+    text-align: center;
+  }
+
+  .icon{
+    display: none;
+  }
+}

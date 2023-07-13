@@ -1,16 +1,17 @@
 textarea {
   font-family: Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   resize: none;
   border: none;
   overflow: auto;
   outline: none;
-  padding: 1.5rem 1rem;
+  padding: 1.5em 1em;
   width: 60%;
+  height: 12vh;
 }
 
 textarea::placeholder {
-  font-size: 1.2rem;
+  font-size: 1.2em;
   text-align: center;
 }
 
@@ -19,12 +20,12 @@ textarea:focus::placeholder {
 }
 
 textarea::-ms-value {
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
 .post_header {
-  font-size: 2rem;
-  margin: 1rem 0;
+  font-size: 2em;
+  margin: 0.5em 0;
 }
 
 .post_functions{
@@ -37,11 +38,12 @@ textarea::-ms-value {
 
 .text_extra{
   width: 50%;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   text-align: center;
   padding: 1rem 0 1rem 0;
 }
 
 .postButton {
   width: 50%;
+  border-style: none;
 }

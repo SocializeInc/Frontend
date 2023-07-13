@@ -1,21 +1,17 @@
-import Navigation from '../../pages/Home/Navigation/Navigation';
-import User from '../../pages/Home/User/User';
+import Navigation from "../../pages/Home/Navigation/Navigation";
+import User from "../../pages/Home/User/User";
+import SpecificHomePage from "./SpecificHomePage";
 
-import SpecificHomePage from './SpecificHomePage';
-
-import React from 'react';
-
-import './Home.css';
+import styles from "./Home.module.css";
 
 const Home = (props) => {
-
-  return(
-    <div className='main-column-3'>
+  return (
+    <div className={`${styles.main_column_3}`}>
       <Navigation />
-      <SpecificHomePage page={props.main} />
+      <SpecificHomePage className={styles.specific_column} page={props.main} />
       <User />
     </div>
   );
-}
+};
 
 export default Home;

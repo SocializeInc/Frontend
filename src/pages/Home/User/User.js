@@ -1,11 +1,11 @@
 import MainBlock from "../../../components/UI/MainBlock";
+import styles from "./User.module.css";
 
-import "./User.css";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
 const User = () => {
-  const logo = require("../../../assets/user.png");
+  const logo = require("../../../assets/profile_icon.png");
 
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const handleHoverUserMenu = () => {
@@ -16,19 +16,19 @@ const User = () => {
   };
 
   return (
-    <MainBlock>
-      <p className="welcome_message">Welcome back</p>
+    <MainBlock className={styles.block}>
+      <p className={styles.welcome_message}>Welcome back</p>
       <div onMouseLeave={handleLeaveUserMenu}>
-        <div className="user user-row" onMouseOver={handleHoverUserMenu}>
-          <img className="photo" src={logo} alt="User logo" />
-          <div className="username">adamdara</div>
+        <div className={`${styles.user} ${styles.user_row}`} onMouseOver={handleHoverUserMenu}>
+          <img className={styles.photo} src={logo} alt="User logo" />
+          <div className={styles.username}>adamdara</div>
         </div>
         {isUserMenuOpen && (
-          <div className="user user-open">
-            <NavLink className="user_option clean_navlink" to="/profile">
+          <div className={`${styles.user} ${styles.user_open}`}>
+            <NavLink className={`clean_navlink + ${styles.user_option}`} to="/profile">
               Profile
             </NavLink>
-            <NavLink className="user_option clean_navlink" to="/login">
+            <NavLink className={`clean_navlink + ${styles.user_option}`} to="/login">
               Sign Out
             </NavLink>
           </div>

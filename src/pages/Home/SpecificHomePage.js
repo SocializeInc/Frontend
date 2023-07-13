@@ -4,9 +4,11 @@ import MainBlock from '../../components/UI/MainBlock';
 import styles from './SpecificHomePage.module.css';
 
 const SpecificHomePage = (props) => {
+  const classes = `${props.className} + ${styles.middle_block}`
+
   const ComponentToShow = props.page;
     return(
-      <MainBlock className={styles.middle_block}>
+      <MainBlock className={classes}>
         <ComponentToShow />
       </MainBlock>
     );

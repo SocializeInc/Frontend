@@ -1,11 +1,22 @@
 .block_button{
-  outline: solid rgb(209, 209, 209, 0.8) 1px;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   text-align: center;
-  padding: 1rem 0 1rem 0;
+  padding: 1em 0 1em 0;
   cursor: pointer;
+  width: 80%;
 }
 
 .block_button:hover{
   background-color: rgb(209, 209, 209, 0.8);
 }
+
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width: 767px){
+  
+}
+
+/* Desktop */
+@media only screen and (min-width: 768px){
+  
+}
+
