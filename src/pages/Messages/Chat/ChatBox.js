@@ -39,7 +39,7 @@ const ChatBox = ({ backToUsers }) => {
   }, []);
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.partner_header}>
         <span className={styles.partner_name}>Random user</span>
         <button
@@ -59,7 +59,7 @@ const ChatBox = ({ backToUsers }) => {
         </div>
       </div>
       <SendMessage scroll={scroll} />
-    </>
+    </div>
   );
 };
 
