@@ -4,7 +4,7 @@ import BlockButton from "../../../components/UI/BlockButton";
 import styles from "./UserContent.module.css";
 
 const UserContent = () => {
-  const [activeAt, setActiveAt] = useState(null);
+  const [activeAt, setActiveAt] = useState("Posts");
 
   const handlePostsClick = () => {
     setActiveAt("Posts");

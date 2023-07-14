@@ -6,7 +6,7 @@
 }
 
 .message_bar {
-  margin: 1em 1em;
+  margin: 0 0.2em 0 1em;
   padding: 0.5em 1em;
   height: 1.5em;
   width: 50%;

@@ -40,7 +40,7 @@ textarea::-ms-value {
   width: 50%;
   font-size: 1.2em;
   text-align: center;
-  padding: 1rem 0 1rem 0;
+  padding: 1em 0 1em 0;
 }
 
 .postButton {

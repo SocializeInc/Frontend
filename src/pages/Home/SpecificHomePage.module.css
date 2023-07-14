@@ -2,6 +2,7 @@
 @media only screen and (min-width: 320px) and (max-width: 767px){
   .middle_block{
     text-align: center;
+    width: 95vw;
   }
 }
 
