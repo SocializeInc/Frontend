@@ -1,11 +1,8 @@
 .content_header{
   display: flex;
   flex-direction: row;
+  width: 80%;
 }
-
-/* .content_header:focus-within *{
-  background: none;
-} */
 
 .active{
   background-color: rgb(209, 209, 209, 0.8);

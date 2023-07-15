@@ -1,6 +1,6 @@
-.bar{
+.bar {
   text-align: center;
-  margin: 1em 1em;
+  margin: 1em;
   padding: 0.4em 0.4em;
   height: 1.5rem;
   width: 80%;
@@ -9,7 +9,7 @@
   font-size: 1em;
 }
 
-.bar:focus{
+.bar:focus {
   outline: none;
 }
 
@@ -17,12 +17,29 @@
   color: transparent;
 }
 
-/* Mobile */
-@media only screen and (min-width: 320px) and (max-width: 767px){
+.backdrop {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
 
+.results {
+  flex: 1;
+  background-color: white;
+  outline: solid rgb(209, 209, 209, 0.8) 1px;
+  border-radius: 1em;
+}
+
+/* Mobile */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
 }
 
 /* Desktop */
-@media only screen and (min-width: 768px){
-
+@media only screen and (min-width: 768px) {
 }

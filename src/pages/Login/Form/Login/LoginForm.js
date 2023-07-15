@@ -6,7 +6,11 @@ import styles from "../Form.module.css";
 
 import { useNavigate } from "react-router-dom";
 
+import Cookies from "universal-cookie";
+
 const LoginForm = (props) => {
+  const cookies = new Cookies();
+
   const navigate = useNavigate();
   const [isLoginSubmitted, setLoginIsSubmitted] = useState(false);
 
@@ -52,9 +56,12 @@ const LoginForm = (props) => {
           response.accessToken
             ? setLoginIsSubmitted(true)
             : setLoginIsSubmitted(false);
+          cookies.set("accessToken", response.accessToken, {
+            path: "/",
+            sameSite: "strict",
+            secure: true,
+          });
         })
-        .then((resp) => resp.json())
-        .then((data) => console.log(data))
         .catch((err) => console.log(err));
     })();
 
@@ -98,11 +105,15 @@ const LoginForm = (props) => {
           />
         </div>
         <div className={styles.button_container}>
-          <button id="LogIn" type="submit">Log In</button>
+          <button id="LogIn" type="submit">
+            Log In
+          </button>
         </div>
       </form>
       <div className={styles.button_container}>
-        <button id="Register" type="submit" onClick={registerHandler}>Register</button>
+        <button id="Register" type="submit" onClick={registerHandler}>
+          Register
+        </button>
       </div>
     </Card>
   );

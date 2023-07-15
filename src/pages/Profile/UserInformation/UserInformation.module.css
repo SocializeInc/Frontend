@@ -50,10 +50,11 @@
 }
 
 .information_user{
-  text-align: start;
+  text-align: center;
 }
 
 .information_block{
+  width: 80%;
   margin: 1rem;
   padding: 0.5rem;
 }

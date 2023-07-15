@@ -1,6 +1,7 @@
 /* Mobile */
 @media only screen and (min-width: 320px) and (max-width: 767px){
   .middle_block{
+    position: relative;
     text-align: center;
     width: 95vw;
   }
@@ -9,6 +10,7 @@
 /* Desktop */
 @media only screen and (min-width: 768px){
   .middle_block{
+    position: relative;
     text-align: center;
     border-style: none solid none solid;
     border-color: #ff9966;

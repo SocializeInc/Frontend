@@ -8,8 +8,14 @@ const Feed = () => {
   return (
     <>
       <SearchBar />
-      <PostCreator className={styles.content_block} />
-      <Post />
+      <div className={styles.posts_block}>
+        <PostCreator className={styles.content_block} />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+        <Post />
+      </div>
     </>
   );
 };

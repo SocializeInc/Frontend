@@ -5,10 +5,10 @@ import UserContent from './UserContent/UserContent';
 
 const Profile = () => {
   return(
-    <>
+    <div className={styles.profile_container}>
       <UserInformation />
       <UserContent />
-    </>
+    </div>
   );
 };
 
