@@ -5,8 +5,8 @@ const InformationBlock = (props) => {
   
   return(
     <div className={classes}>
-      <p>First Name:</p>
-      <span>Adam</span>
+      <p>{props.header}:</p>
+      <span></span>
     </div>
   );
 };

@@ -40,10 +40,14 @@
     background: #ff0000;
   }
 
-  .input_container > input {
-    height: 3vmax;
+  .input_container > input, select {
+    height: 4vmax;
     border: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 0.8em;
+  }
+
+  .input_container > option{
+    width: 100px;
   }
 }
 
@@ -71,6 +75,7 @@
     flex-direction: column;
     gap: 1vmin;
     margin: 2vmin;
+    height: 3em;
   }
 
   .button_container > button {
@@ -87,9 +92,9 @@
     background: #ff0000;
   }
 
-  .input_container > input {
-    height: 3vmin;
+  .input_container > input, select {
     border: 1px solid rgba(0, 0, 0, 0.2);
     font-size: 0.8em;
+    width: 8vw;
   }
 }

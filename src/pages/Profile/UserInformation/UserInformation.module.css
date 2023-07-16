@@ -49,6 +49,10 @@
   opacity: 1;
 }
 
+.name{
+  font-size: 2em;
+}
+
 .information_user{
   text-align: center;
 }

@@ -13,17 +13,22 @@ const UserInformation = () => {
           <span className={styles.button_text}>Change Picture</span>
         </button>
       </div>
-      <p>Adam Dara</p>
+      <p className={styles.name}>Adam Dara</p>
       <div className={`${styles.information_block}`}>
         <p className={styles.information_user}>Information</p>
         <div className={styles.row}>
           <div className={styles.column}>
-            <InformationBlock />
+            <InformationBlock header="First Name"/>
+            <InformationBlock header="Last Name"/>
+            <InformationBlock header="Username"/>
           </div>
           <div className={styles.column}>
-            <InformationBlock />
+            <InformationBlock header="E-Mail"/>
+            <InformationBlock header="Country"/>
+            <InformationBlock header="Birth Date"/>
           </div>
         </div>
+        <InformationBlock header="Desciption"/>
       </div>
     </>
   );

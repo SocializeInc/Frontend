@@ -3,15 +3,15 @@ import Card from "../../../../components/UI/Card";
 import PopupModal from "../../../../components/UI/PopupModal";
 
 // import multiple files with css modules
-import inputContainer from './RegisterForm.module.css'
-import formStyles from '../Form.module.css';
+import inputContainer from "./RegisterForm.module.css";
+import formStyles from "../Form.module.css";
 let styles = {};
-Object.assign(styles, inputContainer, formStyles)
-
+Object.assign(styles, inputContainer, formStyles);
 
 
 const RegisterForm = (props) => {
   const [isRegisterSubmitted, setRegisterIsSubmitted] = useState(false);
+  const [countries, setCountries] = useState([]);
 
   const [registeredUserData, setRegisteredUserData] = useState({
     username: "",
@@ -21,7 +21,7 @@ const RegisterForm = (props) => {
     password: "",
     passwordAgain: "",
     country: "",
-    birthDate: "",
+    birthDate: new Date(),
     role: "",
   });
 
@@ -124,6 +124,22 @@ const RegisterForm = (props) => {
       birthDate: "",
       role: "",
     });
+  };
+
+  const getCountries = () => {
+    (async () => {
+      await fetch("https://restcountries.com/v3.1/all", {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "get",
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          setCountries(response.map((country) => country.name));
+        })
+        .catch((err) => console.log(err));
+    })();
   };
 
   useEffect(() => {
@@ -235,23 +251,32 @@ const RegisterForm = (props) => {
               </div>
               <div className={styles.input_container}>
                 <label>Country</label>
-                <input
+                <select
                   id="Country"
-                  type="text"
                   name="country"
                   value={registeredUserData.country}
                   onChange={countryChangeHandler}
+                  onClick={getCountries}
+                  autoComplete="off"
                   required
-                />
+                >
+                  {countries
+                    .sort((a, b) => a.common.localeCompare(b.common))
+                    .map((c) => (
+                      <option key={c.common}>{c.common.length > 16 ? `${c.common.substring(0, 16)}...` : c.common}</option>
+                    ))}
+                </select>
               </div>
               <div className={styles.input_container}>
                 <label>Birth Date</label>
                 <input
                   id="BirthDate"
-                  type="text"
                   name="birthDate"
+                  type="date"
+                  className={styles.datePicker}
                   value={registeredUserData.birthDate}
                   onChange={birthDateChangeHandler}
+                  autoComplete="off"
                   required
                 />
               </div>

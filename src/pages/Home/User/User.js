@@ -2,13 +2,14 @@ import MainBlock from "../../../components/UI/MainBlock";
 import styles from "./User.module.css";
 
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Cookies from "universal-cookie";
 
 const User = () => {
   const cookies = new Cookies();
   const logo = require("../../../assets/profile_icon.png");
+  const [username, setUsername] = useState(false);
 
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const handleHoverUserMenu = () => {
@@ -20,17 +21,14 @@ const User = () => {
 
   const getUsername = () => {
     (async () => {
-      await fetch("http://localhost:8080/socialize/api/search/users", {
+      fetch("http://localhost:8080/socialize/api/account/getUsername", {
         method: "get",
         headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + cookies.get("accessToken"),
+          Authorization: `Bearer ${cookies.get("accessToken")}`,
         },
       })
-        .then((response) => response.json())
-        .then((response) => {
-          return response.username;
-        })
+        .then((response) => response.text())
+        .then((text) => setUsername(text))
         .catch((err) => console.log(err));
     })();
   };
@@ -40,8 +38,10 @@ const User = () => {
       path: "/",
       sameSite: "strict",
       secure: true,
-    })
-  }
+    });
+  };
+
+  useEffect(getUsername);
 
   return (
     <MainBlock className={styles.block}>
@@ -52,7 +52,7 @@ const User = () => {
           onMouseOver={handleHoverUserMenu}
         >
           <img className={styles.photo} src={logo} alt="User logo" />
-          <div className={styles.username}>{() => getUsername}</div>
+          <div className={styles.username}>{username}</div>
         </div>
         {isUserMenuOpen && (
           <div className={`${styles.user} ${styles.user_open}`}>
