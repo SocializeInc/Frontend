@@ -1,24 +1,41 @@
+.navLink{
+  display: flex;
+  flex-direction: inherit;
+  width: inherit;
+  height: 20px;
+}
+
 .user_block{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  max-height: 70vh;
+  overflow: auto;
 }
 
 .user{
   outline: solid rgb(209, 209, 209, 0.8) 1px;
   border-radius: 1em;
+  padding: 1.5em;
+  margin: 1em;
 }
 
 
 /* Mobile */
 @media only screen and (min-width: 320px) and (max-width: 767px){
   .user{
-    width: 80vw;
+    width: 60vw;
+    padding: 0.75em;
+    margin: 0.75em;
+  }
+  .user_block{
+    max-height: 65vh;
   }
 }
 
 /* Desktop */
 @media only screen and (min-width: 768px){
   .user{
-    width: 80%;
+    width: 35vw;
   }
 }

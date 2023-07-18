@@ -5,9 +5,13 @@ import Post from "../../../components/UI/Post";
 import styles from "./Feed.module.css";
 
 const Feed = () => {
+  const userProfile = (searchedUser) => {
+    console.log(`Searched profile: ${searchedUser}`);
+  };
+
   return (
     <>
-      <SearchBar />
+      <SearchBar page="feed" userProfile={userProfile} />
       <div className={styles.posts_block}>
         <PostCreator className={styles.content_block} />
         <Post />

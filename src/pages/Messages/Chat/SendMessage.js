@@ -30,7 +30,7 @@ const SendMessage = ({scroll}) => {
   return (
     <form ref={scroll} className={styles.send_container} onSubmit={sendMessage}>
       <input className={styles.message_bar} value={message} placeholder="Start a new message" onChange={(e) => setMessage(e.target.value)} />
-      <button id="Send" class={styles.send_message} type="submit">
+      <button id="Send" className={styles.send_message} type="submit">
         <img className={styles.send_photo} src={sendLogo} alt="Send" />
       </button>
     </form>

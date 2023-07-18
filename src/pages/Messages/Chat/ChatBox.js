@@ -1,59 +1,58 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  query,
-  collection,
-  orderBy,
-  onSnapshot,
-  limit,
-} from "firebase/firestore";
-import { db } from "../../../firebase";
+import { useNavigate, useParams } from "react-router-dom";
 import Message from "../../../components/UI/Message";
 import SendMessage from "./SendMessage.js";
 
 import styles from "./ChatBox.module.css";
+import Cookies from "universal-cookie";
 
-const ChatBox = ({ backToUsers }) => {
+const ChatBox = (props) => {
+  const cookies = new Cookies();
   const backLogo = require("../../../assets/back_arrow.png");
 
-  const [messages, setMessages] = useState([]);
+  const [data, setData] = useState([]);
   const scroll = useRef();
+  const navigate = useNavigate();
+  let { id } = useParams();
+
+
+async function fetchData() {
+  const response = await fetch(`http://localhost:8080/socialize/api/messages/${id}/getMessages`, {
+    method: "get",
+    headers: {
+      Authorization: `Bearer ${cookies.get("accessToken")}`,
+    },
+  })
+  const data = await response.json();
+  return data;
+}
 
   useEffect(() => {
-    const q = query(
-      collection(db, "messages"),
-      orderBy("createdAt", "desc"),
-      limit(50)
-    );
-
-    const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
-      const fetchedMessages = [];
-      QuerySnapshot.forEach((doc) => {
-        fetchedMessages.push({ ...doc.data(), id: doc.id });
-      });
-      const sortedMessages = fetchedMessages.sort(
-        (a, b) => a.createdAt - b.createdAt
-      );
-      setMessages(sortedMessages);
-    });
-    return () => unsubscribe;
+    (async () => {
+      const data = await fetchData();
+      setData(data);
+    })();
   }, []);
 
   return (
     <div className={styles.container}>
       <div className={styles.partner_header}>
-        <span className={styles.partner_name}>Random user</span>
+        <span className={styles.partner_name}>{data.roomName}</span>
         <button
           id="Back"
           className={styles.back}
-          onClick={() => backToUsers(true)}
+          onClick={(e) => {
+            e.preventDefault();
+            navigate(-1);
+          }}
         >
           <img className={styles.back_logo} src={backLogo} alt="Back"></img>
         </button>
       </div>
       <div className={styles.messages_container}>
         <div className={styles.messages}>
-          {messages?.map((message) => (
-            <Message className={message} message={message} />
+          {data.messages?.map((message) => (
+            <Message key={message.id} className={message} message={message} />
           ))}
           <span ref={scroll}></span>
         </div>

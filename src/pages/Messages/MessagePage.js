@@ -4,24 +4,16 @@ import ChatBox from "./Chat/ChatBox";
 
 const MessagePage = () => {
   const [partnerValid, setPartnerValid] = useState(false);
-  let Partner = null;
-  if (partnerValid) {
-    Partner = ChatBox;
-  }
+  const [roomId, setRoomId] = useState(null);
 
-  const backToUsers = (b) =>{
-    if (b){
-      setPartnerValid(false);
-    }
-  };
-
-  const chatPartner = (p) => {
-    if (p !== UserBox) {
+  const getRoomInfo = (id, name) => {
+    if (id !== null) {
       setPartnerValid(true);
+      setRoomId(id);
     }
   };
 
-  return <>{partnerValid ? <Partner backToUsers={backToUsers}/> : <UserBox chatPartner={chatPartner} />}</>;
+  return <>{partnerValid ? <ChatBox roomId={roomId}/> : <UserBox chatPartner={getRoomInfo} />}</>;
 };
 
 export default MessagePage;
