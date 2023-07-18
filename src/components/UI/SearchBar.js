@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import Cookies from "universal-cookie";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const cookies = new Cookies();
   const [results, setResults] = useState([]);
 
@@ -42,17 +42,19 @@ const SearchBar = () => {
         id="Search"
         type="text"
         placeholder="Search..."
+        autoComplete="off"
       />
       {results.length !== 0 && (
         <div className={styles.backdrop}>
           <div className={styles.results}>
-            {results !== [] &&
-              results.map((result) => (
+              {results?.map((result) => (
                 <SearchResult
-                  id={result.username}
+                  key={result.username}
                   firstname={result.firstname}
                   lastname={result.lastname}
                   username={result.username}
+                  page={props.page}
+                  onClick={props.page === "messages" ? () => props.chatRoom(result.username) : () => props.userProfile(result.username)}
                 />
               ))}
           </div>

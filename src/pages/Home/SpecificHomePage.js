@@ -9,7 +9,7 @@ const SpecificHomePage = (props) => {
   const ComponentToShow = props.page;
     return(
       <MainBlock className={classes}>
-        <ComponentToShow />
+        {ComponentToShow}
       </MainBlock>
     );
 }
