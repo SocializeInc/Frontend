@@ -6,32 +6,49 @@ import SendMessage from "./SendMessage.js";
 import styles from "./ChatBox.module.css";
 import Cookies from "universal-cookie";
 
-const ChatBox = (props) => {
+const ChatBox = () => {
   const cookies = new Cookies();
   const backLogo = require("../../../assets/back_arrow.png");
+  const [fetchable, setFetchable] = useState(true);
 
   const [data, setData] = useState([]);
-  const scroll = useRef();
+  const messagesEndRef = useRef();
   const navigate = useNavigate();
   let { id } = useParams();
 
+  function fetchData () {
+    console.log("fetching");
+    (async () => {
+      await fetch(
+        `http://localhost:8080/socialize/api/messages/${id}/getMessages`,
+        {
+          method: "get",
+          headers: {
+            Authorization: `Bearer ${cookies.get("accessToken")}`,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => setData(data))
+        .catch((err) => console.log(err));
+    })();
+  };
 
-async function fetchData() {
-  const response = await fetch(`http://localhost:8080/socialize/api/messages/${id}/getMessages`, {
-    method: "get",
-    headers: {
-      Authorization: `Bearer ${cookies.get("accessToken")}`,
-    },
-  })
-  const data = await response.json();
-  return data;
-}
+  const shouldFetch = (bool) => {
+    setFetchable(bool);
+  };
 
   useEffect(() => {
-    (async () => {
-      const data = await fetchData();
-      setData(data);
-    })();
+    if (fetchable) {
+      console.log("Ha fetchelhető");
+      fetchData();
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      setFetchable(false);
+    }
+  }, [fetchable]);
+
+  useEffect(() => {
+    console.log(data)
   }, []);
 
   return (
@@ -52,12 +69,25 @@ async function fetchData() {
       <div className={styles.messages_container}>
         <div className={styles.messages}>
           {data.messages?.map((message) => (
-            <Message key={message.id} className={message} message={message} />
+            <div
+              key={message.id}
+              className={
+                message.sourceId === 57
+                  ? styles.received_messages
+                  : styles.sent_messages
+              }
+            >
+              <Message
+                key={message.id}
+                className={message.sourceId === 57 ? styles.received : ``}
+                message={message}
+              />
+            </div>
           ))}
-          <span ref={scroll}></span>
+          <span ref={messagesEndRef}></span>
         </div>
       </div>
-      <SendMessage scroll={scroll} />
+      <SendMessage targetName={data.roomName} sentMessage={shouldFetch} />
     </div>
   );
 };

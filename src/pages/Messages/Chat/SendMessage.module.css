@@ -6,13 +6,14 @@
 }
 
 .message_bar {
-  margin: 0 0.2em 0 1em;
+  margin: 1em 1em;
   padding: 0.5em 1em;
-  height: 1.5em;
-  width: 50%;
   border: solid rgb(209, 209, 209, 0.8) 1px;
   border-radius: 1em;
-  font-size: 1em;
+}
+
+.message_bar:focus{
+  outline: none;
 }
 
 .send_message {
@@ -40,15 +41,22 @@
   transition-duration: 200ms;
 }
 
+.send_disabled, .send_disabled:hover{
+  display: inherit;
+  flex-direction: inherit;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  width: 2.3em;
+  height: 2.3em;
+  transform: none;
+}
+
 /* Mobile */
 @media only screen and (min-width: 320px) and (max-width: 767px){
   .message_bar {
-    margin: 1em 1em;
-    padding: 0.5em 1em;
     height: 2em;
     width: 80%;
-    border: solid rgb(209, 209, 209, 0.8) 1px;
-    border-radius: 1em;
     font-size: 1.2em;
   }
 }
@@ -56,12 +64,8 @@
 /* Desktop */
 @media only screen and (min-width: 768px){
   .message_bar {
-    margin: 1em 1em;
-    padding: 0.5em 1em;
     height: 1.5em;
     width: 50%;
-    border: solid rgb(209, 209, 209, 0.8) 1px;
-    border-radius: 1em;
     font-size: 1em;
   }
 }

@@ -1,10 +1,12 @@
 import styles from "./Message.module.css";
 
-const Message = ({ message }) => {
+const Message = (props) => {
+  const classes = `${props.className} ${styles.message_body}`;
+
   return (
-    <div className={styles.message_body} id={message.id}>
+    <div className={classes} id={props.message.id}>
       {/* <p>Adam</p> */}
-      <p>{message.message}</p>
+      <p>{props.message.message}</p>
     </div>
   );
 };

@@ -1,39 +1,64 @@
-import React, { useState } from "react";
-import { db } from "../../../firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
-import styles from './SendMessage.module.css';
+import styles from "./SendMessage.module.css";
 
-const SendMessage = ({scroll}) => {
-  const sendLogo = require("../../../assets/send_message.png");
+import Cookies from "universal-cookie";
 
+const SendMessage = ({ targetName, sentMessage }) => {
+  const cookies = new Cookies();
+  const sendEnabledLogo = require("../../../assets/send_message_enabled.png");
+  const sendDisabledLogo = require("../../../assets/send_message_disabled.png");
   const [message, setMessage] = useState("");
+  let { id } = useParams();
 
-  const sendMessage = async (event) => {
+  const sendHandler = (event) => {
     event.preventDefault();
     if (message.trim() === "") {
-      alert("Enter valid message");
       return;
     }
-    // const { uid, displayName, photoURL } = auth.currentUser;
-    await addDoc(collection(db, "messages"), {
-      text: message,
-      // name: displayName,
-      // avatar: photoURL,
-      createdAt: serverTimestamp(),
-      // uid,
-    });
+    (async () => {
+      await fetch(
+        `http://localhost:8080/socialize/api/messages/${id}/sendMessage`,
+        {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + cookies.get("accessToken"),
+          },
+          body: JSON.stringify({
+            targetName: targetName,
+            message: message,
+          }),
+        }
+      );
+    })();
     setMessage("");
-    scroll.current.scrollIntoView({ behavior: "smooth" });
+    sentMessage(true);
   };
 
+  useEffect(() => {
+    sentMessage(false)
+  }, [])
+
   return (
-    <form ref={scroll} className={styles.send_container} onSubmit={sendMessage}>
-      <input className={styles.message_bar} value={message} placeholder="Start a new message" onChange={(e) => setMessage(e.target.value)} />
-      <button id="Send" className={styles.send_message} type="submit">
-        <img className={styles.send_photo} src={sendLogo} alt="Send" />
+    <div className={styles.send_container} >
+      <input
+        className={styles.message_bar}
+        value={message}
+        placeholder="Start a new message"
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      <button
+        id="Send"
+        className={styles.send_message}
+        type="button"
+        onClick={sendHandler}
+        disabled={message !== "" ? false : true}
+      >
+        <img className={message !== "" ? styles.send_photo : styles.send_disabled} src={message !== "" ? sendEnabledLogo : sendDisabledLogo} alt="Send" />
       </button>
-    </form>
+    </div>
   );
 };
 
